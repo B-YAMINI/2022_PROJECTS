@@ -1,0 +1,80 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false
+
+
+intents:
+- bot_challenge
+- goodbye
+- greet
+- user_submitted_password
+- user_submitted_usn
+- user_wants_to_check_admission_status
+- user_wants_to_check_attendance
+- user_wants_to_check_marks
+- user_wants_to_check_upcoming_holidays
+- user_submitted_faculty_details
+- user_asks_about_faculty
+- user_wants_to_know_about_UB
+- user_wants_to_know_about_BEL
+- user_wants_to_know_about_TP
+- user_asks_about_mental_health
+- user_wants_to_check_upcoming_club_events
+
+responses:
+  utter_greet:
+  - buttons:
+    - payload: I would like to know about my attendance
+      title: Attendance
+    - payload: I would like to know about my marks
+      title: Marks
+    text: Hey! Hope you are doing well. Below are few of the suggestions
+  utter_ask_usn:
+  - text: Please enter your Registration number
+  utter_ask_password:
+  - text: Please enter your password
+  utter_ask_faculty_id:
+  - text: Please enter faculty id
+  utter_admission_info:
+  - text: The admission for 2022 will happen in September
+  utter_goodbye:
+  - text: Have a good day!
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ub_details:
+  - text: University Building is the pink building diagonally opposite boys hostel
+  - text: UB is the building near arch gate
+  - text: University Buidling is the first building when you enter from Arch Gate
+  utter_tp_details:
+  - text: Tech Park is the big building near java cafeteria
+  - text: TP is the building near the ground
+  utter_bel_details:
+  - text: Basic Engineering Lab is the building exactly opposite boys hostel
+  - text: BEL is the building next to java cafeteria
+  utter_mental_health_help:
+  - text: "Hi, Please understand that seeking help is not a bad thing. You should know you are not alone in this and we are here to help you. 
+          \n Please reach out to us on: 
+          \n Dr Bhasi Sulumaram 
+          \n Professor & HoD 
+          \n +91 9383845040 
+          \n ------------------
+          \n P. Pangajam 
+          \n Assistant Professor 
+          \n +91 8939890115 
+          \n ------------------
+          \n D I Ravindran
+          \n Psychotherapist
+          \n +91 9840414389"
+
+
+actions:
+- validate_credentials_and_display_marks
+- action_admission_info
+- action_ask_password
+- action_ask_usn
+- validate_credentials_and_display_attendance
+- display_upcoming_holidays
+- ask_faculty_id
+- display_faculty_details
+- display_upcoming_club_events
